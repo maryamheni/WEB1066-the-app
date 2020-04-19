@@ -21,7 +21,6 @@ before_deploy:
 deploy:
     provider: script
     script: "./script/deploy.sh"
-       - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_LOGIN" --password-stdin
     on:
     condition: "$BUILD_TARGET == './monolithic/ui'"
     branch: master  
