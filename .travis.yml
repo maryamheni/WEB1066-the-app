@@ -21,13 +21,7 @@ before_deploy:
     - ./gradlew -p ./monolithic/ui packageToContainer ;    
 deploy:
     provider: script
-    script: "./script/deploy.sh"
-    #!/usr/bin/env bash
-    set -e
-
-    "echo \"${DOCKER_PASS}\" | docker login --username \"${DOCKER_LOGIN}\" --password-stdin"
-    docker tag zutherb/monolithic-shop:latest ${DOCKER_LOGIN}/theapp:latest
-    docker push ${DOCKER_LOGIN}/monolithic-shop:latest
+    script: chmod +x ./script/deploy.sh 
     on:
     condition: "$BUILD_TARGET == './monolithic/ui'"
     branch: master  
