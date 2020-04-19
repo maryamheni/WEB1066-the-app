@@ -16,6 +16,7 @@ jobs:
         name : build
         script:
             - ./gradlew clean jar 
+            - ./gradlew -p ./monolithic/ui packageToContainer
       - stage: test
         name: test
         script:
